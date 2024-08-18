@@ -1,55 +1,43 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const categoryList = document.getElementById('category-list');
-    const postList = document.getElementById('post-list');
+    const authSection = document.getElementById('auth-section');
 
-    // Fetch categories from Supabase
-    const { data: categories, error: categoryError } = await supabase.from('categories').select();
-    if (categoryError) {
-        console.error(categoryError);
-    } else {
-        categories.forEach(category => {
-            const li = document.createElement('li');
-            li.textContent = category.name;
-            li.addEventListener('click', () => filterPostsByCategory(category.id));
-            categoryList.appendChild(li);
+    // Check if the user is logged in
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (user) {
+        // User is logged in
+        authSection.innerHTML = `
+            <p>Welcome, ${user.email}</p>
+            <button id="view-profile">View Profile</button>
+            <button id="logout-button">Logout</button>
+        `;
+
+        document.getElementById('view-profile').addEventListener('click', () => {
+            window.location.href = 'user.html';
         });
-    }
 
-    // Fetch all posts initially
-    const { data: posts, error: postError } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
-    if (postError) {
-        console.error(postError);
+        document.getElementById('logout-button').addEventListener('click', async () => {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                console.error('Error signing out:', error.message);
+            } else {
+                window.location.reload();
+            }
+        });
+
     } else {
-        displayPosts(posts);
-    }
+        // User is not logged in
+        authSection.innerHTML = `
+            <button id="login-button">Login</button>
+            <button id="register-button">Register</button>
+        `;
 
-    // Function to filter posts by category
-    async function filterPostsByCategory(category_id) {
-        const { data: filteredPosts, error: filterError } = await supabase
-            .from('posts')
-            .select('*')
-            .eq('category_id', category_id)
-            .order('created_at', { ascending: false });
+        document.getElementById('login-button').addEventListener('click', () => {
+            window.location.href = 'login.html';
+        });
 
-        if (filterError) {
-            console.error(filterError);
-        } else {
-            displayPosts(filteredPosts);
-        }
-    }
-
-    // Function to display posts
-    function displayPosts(posts) {
-        postList.innerHTML = ''; // Clear the post list
-        posts.forEach(post => {
-            const postDiv = document.createElement('div');
-            postDiv.classList.add('post-card');
-            postDiv.innerHTML = `
-                <h4>${post.title}</h4>
-                <p>${post.description}</p>
-                <p><strong>Price:</strong> $${post.price}</p>
-            `;
-            postList.appendChild(postDiv);
+        document.getElementById('register-button').addEventListener('click', () => {
+            window.location.href = 'register.html';
         });
     }
 });

@@ -1,29 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const registerForm = document.getElementById('register-form');
+document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
 
-    registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
 
-        const email = document.getElementById('register-email').value;
-        const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
-        if (password !== confirmPassword) {
-            alert('Passwords do not match!');
-            return;
-        }
-
-        // Sign up the user with Supabase
-        const { user, error } = await supabase.auth.signUp({
-            email: email,
-            password: password
-        });
-
-        if (error) {
-            alert('Error: ' + error.message);
-        } else {
-            alert('Registration successful!');
-            window.location.href = 'index.html'; // Redirect to login
-        }
-    });
+    if (error) {
+        alert('Registration failed: ' + error.message);
+    } else {
+        window.location.href = 'login.html';
+    }
 });

@@ -1,22 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        // Log the user in with Supabase
-        const { user, error } = await supabase.auth.signIn({
-            email: email,
-            password: password
-        });
-
-        if (error) {
-            alert('Error: ' + error.message);
-        } else {
-            window.location.href = 'user.html'; // Redirect to user's posts
-        }
-    });
+    if (error) {
+        alert('Login failed: ' + error.message);
+    } else {
+        window.location.href = 'index.html';
+    }
 });
