@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Add Post</title>
+</head>
+<body>
+    <div class="container">
+        <div class="center-column">
+            <h2>Add New Post</h2>
+            <form id="add-post-form">
+                <input type="text" id="post-title" placeholder="Title" required>
+                <select id="post-category" required>
+                    <option value="">Select a Category</option>
+                    <!-- Categories will be dynamically loaded here -->
+                </select>
+                <input type="number" id="post-price" placeholder="Price" required>
+                <textarea id="post-description" placeholder="Description"></textarea>
+                <input type="file" id="post-images" multiple>
+                <button type="submit">Add Post</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/add-post.js"></script>
+</body>
+</html>
