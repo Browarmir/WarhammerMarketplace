@@ -1,269 +1,122 @@
-/* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
-}
-
-h2, h3, h4 {
     color: #333;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Container */
-.container {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* Left Column (Categories & Search) */
-.left-column {
-    width: 20%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-right: 20px;
-}
-
-.left-column h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-#category-list li {
-    margin: 8px 0;
-    cursor: pointer;
-    padding: 8px;
-    transition: background-color 0.3s ease;
-}
-
-#category-list li:hover {
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 4px;
-}
-
-#search-bar {
-    width: 100%;
+header {
+    background-color: #333;
+    color: white;
     padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-top: 20px;
-    font-size: 16px;
+    text-align: center;
 }
 
-/* Center Column (Posts & Filters) */
-.center-column {
-    flex-grow: 1;
-    background-color: #fff;
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.filters {
+section {
     margin-bottom: 20px;
-    text-align: right;
 }
 
-.filters button {
-    background-color: #007BFF;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.sorting, .posts, .login-form, .register-form, .add-post-form, .cart, .checkout-form {
+    max-width: 800px;
+    margin: auto;
 }
 
-.filters button:hover {
-    background-color: #0056b3;
-}
-
-#post-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.posts {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-/* Post Card */
-.post-card {
-    background-color: #fff;
+.post {
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 15px;
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    width: calc(50% - 20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.post-card:hover {
-    transform: translateY(-5px);
-}
-
-.post-card h4 {
-    margin-top: 0;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.post-card p {
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Right Column (Login / Profile) */
-.right-column {
-    width: 20%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-left: 20px;
-    text-align: center;
-}
-
-#auth-section h3 {
-    margin-bottom: 15px;
-    font-size: 20px;
-}
-
-form input[type="email"], form input[type="password"] {
+.post img {
     width: 100%;
+    height: auto;
+}
+
+.post h3 {
+    margin: 0;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+    background-color: #f4f4f4;
 }
 
-form button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 4px;
+.post p {
+    margin: 0;
+    padding: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
     border: none;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-form button:hover {
+button:hover {
     background-color: #0056b3;
 }
 
-/* User Profile Section */
-#user-section {
-    text-align: center;
+.login-form, .register-form, .add-post-form, .checkout-form {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
 
-#view-profile-btn, #add-post-btn, #logout-btn {
+label {
     display: block;
-    margin: 10px 0;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
     padding: 10px;
-    background-color: #28A745;
-    color: #fff;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-#logout-btn {
-    background-color: #DC3545;
-}
-
-#view-profile-btn:hover, #add-post-btn:hover, #logout-btn:hover {
-    background-color: #218838;
-}
-
-/* Buttons */
-button:focus {
-    outline: none;
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .left-column, .right-column {
-        width: 100%;
-        margin: 0 0 20px;
-    }
-
-    .center-column {
-        width: 100%;
-    }
-}
-/* Registration Page Styles */
-.center-column {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-h2 {
-    font-size: 24px;
+.checkout-button {
+    display: block;
     text-align: center;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form input {
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-form button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-p {
-    text-align: center;
-    margin-top: 15px;
-}
-
-p a {
-    color: #007BFF;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
     text-decoration: none;
+    border-radius: 5px;
 }
 
-p a:hover {
-    text-decoration: underline;
+.checkout-button:hover {
+    background-color: #218838;
 }

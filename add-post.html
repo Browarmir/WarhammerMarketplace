@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post - Warhammer Marketplace</title>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Add Post</title>
 </head>
 <body>
-    <div class="container">
-        <div class="center-column">
-            <h2>Add New Post</h2>
-            <form id="add-post-form">
-                <input type="text" id="post-title" placeholder="Title" required>
-                <select id="post-category" required>
-                    <option value="">Select a Category</option>
-                    <!-- Categories will be dynamically loaded here -->
-                </select>
-                <input type="number" id="post-price" placeholder="Price" required>
-                <textarea id="post-description" placeholder="Description"></textarea>
-                <input type="file" id="post-images" multiple>
+    <header>
+        <h1>Warhammer Marketplace</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="add-post-form">
+            <h2>Add a New Post</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+                <label for="image">Image URL:</label>
+                <input type="url" id="image" name="image" required>
                 <button type="submit">Add Post</button>
             </form>
-        </div>
-    </div>
-
-    <script src="js/firebase-config.js"></script>
-    <script src="js/add-post.js"></script>
+        </section>
+    </main>
 </body>
 </html>

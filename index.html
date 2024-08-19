@@ -3,52 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
     <title>Warhammer Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <div class="categories-filter">
-                <h3>Categories</h3>
-                <ul id="category-list">
-                    <!-- Categories will be dynamically loaded here -->
-                </ul>
-            </div>
-            <input type="text" id="search-bar" placeholder="Search...">
+    <header>
+        <h1>Warhammer Marketplace</h1>
+        <nav>
+            
+            <a href="login.html" id="login-button">Login</a> | 
+            <a href="register.html">Register</a> | 
+            <a href="add-post.html">Add Post</a> | 
+            <a href="shopping-cart.html">Cart</a>
+        </nav>
+        <div id="user-info">
+            <span id="username-display"></span>
+            <a href="index.html" id="logout-button" style="display: none; clor: red;">Logout</a>
         </div>
+    </header>
+    
+    <main>
+        <section class="sorting">
+            <h2>Sort by</h2>
+            <button onclick="sortPosts('price')">Price</button>
+            <button onclick="sortPosts('name')">Name</button>
+        </section>
 
-        <div class="center-column">
-            <div class="filters">
-                <button id="latest">Latest</button>
-                <button id="cheapest">Cheapest</button>
-                <button id="expensive">Most Expensive</button>
+        <section class="posts" id="post-list">
+            <div class="post" data-price="50" data-name="Ork Warboss">
+                <img src="images/miniature1.jpg" alt="Ork Warboss">
+                <h3>Ork Warboss</h3>
+                <p>Price: $50</p>
+                <button>Add to Cart</button>
             </div>
-            <div id="post-list">
-                <!-- Posts will be displayed here -->
+            <div class="post" data-price="75" data-name="Space Marine Squad">
+                <img src="images/miniature2.jpg" alt="Space Marine Squad">
+                <h3>Space Marine Squad</h3>
+                <p>Price: $75</p>
+                <button>Add to Cart</button>
             </div>
-        </div>
+            <div class="post" data-price="60" data-name="Eldar Farseer">
+                <img src="images/miniature3.jpg" alt="Eldar Farseer">
+                <h3>Eldar Farseer</h3>
+                <p>Price: $60</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="post" data-price="85" data-name="Tau Crisis Battlesuit">
+                <img src="images/miniature4.jpg" alt="Tau Crisis Battlesuit">
+                <h3>Tau Crisis Battlesuit</h3>
+                <p>Price: $85</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="post" data-price="40" data-name="Chaos Space Marine">
+                <img src="images/miniature5.jpg" alt="Chaos Space Marine">
+                <h3>Chaos Space Marine</h3>
+                <p>Price: $40</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="post" data-price="90" data-name="Necron Warrior">
+                <img src="images/miniature6.jpg" alt="Necron Warrior">
+                <h3>Necron Warrior</h3>
+                <p>Price: $90</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="post" data-price="55" data-name="Sisters of Battle Squad">
+                <img src="images/miniature7.jpg" alt="Sisters of Battle Squad">
+                <h3>Sisters of Battle Squad</h3>
+                <p>Price: $55</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="post" data-price="70" data-name="Imperial Knight">
+                <img src="images/miniature8.jpg" alt="Imperial Knight">
+                <h3>Imperial Knight</h3>
+                <p>Price: $70</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
 
-        <div class="right-column">
-            <div id="auth-section">
-                <h3>Login</h3>
-                <form id="login-form">
-                    <input type="email" id="email" placeholder="Email">
-                    <input type="password" id="password" placeholder="Password">
-                    <button type="submit">Login</button>
-                </form>
-                <button id="register-btn" onclick="window.location.href='register.html'">Register</button> <!-- Redirect to Register Page -->
-            </div>
-            <div id="user-section" style="display:none;">
-                <h3 id="user-name">Welcome, User</h3>
-                <button id="view-profile-btn">View Profile</button>
-                <button id="logout-btn">Logout</button>
-                <button id="add-post-btn">Add Post</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/supabase-config.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/scripts.js"></script>
+    
 </body>
 </html>
